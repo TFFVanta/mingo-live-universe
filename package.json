@@ -1,25 +1,15 @@
 {
-  "name": "mingo-live-universe",
-  "version": "0.1.0",
+  "name": "mingo-world-renderer-bundle",
   "private": true,
-  "description": "Live 3D story universe and immersive world engine for MINGO.",
+  "version": "0.1.0",
   "workspaces": [
     "apps/*",
     "packages/*"
   ],
   "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev --parallel",
-    "dev:world": "npm --workspace apps/demo-world run dev",
-    "dev:sim": "node apps/simulation-server/src/server.js",
-    "lint": "turbo run lint",
-    "typecheck": "turbo run typecheck"
-  },
-  "devDependencies": {
-    "turbo": "^2.0.0",
-    "typescript": "^5.6.3"
-  },
-  "engines": {
-    "node": ">=20"
+    "dev": "echo 'Open apps/demo-world in your React workspace or copy files into your Next/Vite app.'",
+    "build": "echo 'Starter bundle only. Add your preferred bundler config.'",
+    "sim": "node apps/simulation-server/src/server.js",
+    "bridge:health": "node -e \"fetch('http://localhost:8787/health').then(r=>r.text()).then(console.log)\""
   }
 }

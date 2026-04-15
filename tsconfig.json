@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "lib": ["ES2020", "DOM"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "jsx": "react-jsx",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "@mingo/contracts": ["packages/contracts/src"],
+      "@mingo/canon": ["packages/canon/src"],
+      "@mingo/asset-library": ["packages/asset-library/src"],
+      "@mingo/scene-grammar": ["packages/scene-grammar/src"],
+      "@mingo/procedural-worldgen": ["packages/procedural-worldgen/src"],
+      "@mingo/world-renderer": ["packages/world-renderer/src"]
+    }
+  },
+  "include": ["apps/**/*", "packages/**/*"]
+}

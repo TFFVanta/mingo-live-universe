@@ -1,60 +1,46 @@
-# MINGO Live Universe
+# MINGO World Renderer Bundle
 
-A living story world and immersive storytelling device where NPC presences inhabit a continuous simulated reality, generate story through behavior, and are surfaced through a live 3D observer interface.
+This bundle collects the current MINGO world-rendering direction into one saveable starter codebase.
 
-## Core idea
+Included:
+- shared contracts
+- canon labels
+- asset library
+- scene grammar
+- procedural world generation
+- React Three Fiber world renderer
+- demo app shell
 
-MINGO is structured as a live universe platform:
+## What this is
+A structured starter, not a full production app. It is designed so you can copy it into your existing Next.js / Vite / React workspace and keep building.
 
-- **simulation-server** runs the world
-- **world-renderer** turns world state into a 3D view
-- **story-translator** converts state into scenes and beats
-- **automation-engine** runs the ordered engine pipeline
-- **user-hub** is the personal tracking layer for stories, timelines, and characters
+## Core flow
+ZoneKind + ZoneSubtype + SceneType
+-> Scene Grammar
+-> Asset Selection
+-> Procedural Placement
+-> World Renderer
 
-## Monorepo layout
+## Recommended runtime integration later
+simulation-core
+-> story-translator
+-> renderer scene packet
+-> world-renderer
+-> observer-web
 
-```text
-apps/
-  demo-world/         # live 3D observer
-  simulation-server/  # world runtime + WS/SSE bridge
-  user-hub/           # tracking and management UI
 
-packages/
-  contracts/          # shared types
-  canon/              # naming, tone, force signatures
-  asset-library/      # asset registry
-  scene-grammar/      # zone + scene mapping
-  procedural-worldgen/# spatial generation
-  world-renderer/     # 3D rendering package
-  runtime-bridge/     # client/server runtime connection helpers
-  automation-engine/  # tick pipeline
-  attention-engine/   # sensing, attention, interpretation
-  decision-engine/    # action scoring + selection
-  relationship-engine/# trust/conflict/resonance
-  memory-engine/      # event/place/emotional memory
-  event-engine/       # event generation
-  story-translator/   # data -> scene packets
-  narrative-engine/   # arcs, beats, highlights
-```
+## Live simulation bridge
+This bundle now includes a lightweight simulation server that emits live renderer packets over SSE.
 
-## Install
-
+### Start the simulation bridge
 ```bash
-npm install
+npm run sim
 ```
 
-If you are using the live simulation server with WebSockets:
+### Endpoints
+- `http://localhost:8787/health`
+- `http://localhost:8787/api/state`
+- `http://localhost:8787/events`
 
-```bash
-npm install ws
-```
-
-## Start dev apps
-
-```bash
-npm run dev:world
-npm run dev:sim
-```
-
-
+### Demo-world live hookup
+`apps/demo-world` now uses `useLiveScenePacket()` and will subscribe to the SSE stream when available. If the bridge is offline it falls back to the local demo packet.
