@@ -57,6 +57,4 @@ npm run dev:world
 npm run dev:sim
 ```
 
-## GitHub publish
 
-See `GITHUB_PUBLISH_GUIDE.md` for the exact steps.
